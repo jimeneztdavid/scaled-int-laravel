@@ -1,0 +1,39 @@
+{
+    "name": "jimeneztdavid/scaled-int-laravel",
+    "description": "Laravel integration for jimeneztdavid/scaled-int.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jimeneztdavid\\ScaledIntLaravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Jimeneztdavid\\ScaledIntLaravel\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.2",
+        "illuminate/console": "^12.0|^13.0",
+        "illuminate/database": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
+        "jimeneztdavid/scaled-int": "^1.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0|^11.0",
+        "phpunit/phpunit": "^11.5|^12.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jimeneztdavid\\ScaledIntLaravel\\ScaledIntServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
