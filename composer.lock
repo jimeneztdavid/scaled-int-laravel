@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "74a4eeca2527726293d97736da0967fb",
+    "content-hash": "d2528eea7d152b3818e5a4860c99ec9c",
     "packages": [
         {
             "name": "brick/math",
@@ -1056,20 +1056,20 @@
         },
         {
             "name": "jimeneztdavid/scaled-int",
-            "version": "v1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jimeneztdavid/scaled-int.git",
-                "reference": "e12d1cc5ec14abebeb587530496c681ab8ad2bbc"
+                "reference": "64347a358f2fbbb87b239d40d9278f83821530e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jimeneztdavid/scaled-int/zipball/e12d1cc5ec14abebeb587530496c681ab8ad2bbc",
-                "reference": "e12d1cc5ec14abebeb587530496c681ab8ad2bbc",
+                "url": "https://api.github.com/repos/jimeneztdavid/scaled-int/zipball/64347a358f2fbbb87b239d40d9278f83821530e6",
+                "reference": "64347a358f2fbbb87b239d40d9278f83821530e6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=8.1"
+                "php": ">=8.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "^12.5"
@@ -1100,9 +1100,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jimeneztdavid/scaled-int/issues",
-                "source": "https://github.com/jimeneztdavid/scaled-int/tree/v1.1.0"
+                "source": "https://github.com/jimeneztdavid/scaled-int/tree/1.2.0"
             },
-            "time": "2026-01-26T14:49:11+00:00"
+            "time": "2026-05-29T00:55:09+00:00"
         },
         {
             "name": "laravel/framework",
