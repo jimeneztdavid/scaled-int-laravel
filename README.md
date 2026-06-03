@@ -16,6 +16,87 @@ The package also provides an Artisan command to add the cast to a model automati
 composer require jimeneztdavid/scaled-int-laravel
 ```
 
+## Why this package exists in practice
+
+### Float math is not reliable for exact values
+
+```php
+var_dump(0.1 + 0.2); // float(0.30000000000000004)
+var_dump((0.1 + 0.2) === 0.3); // bool(false)
+```
+
+That is fine for approximate scientific calculations, but not for money, discounts, taxes, or any value that must round exactly.
+
+### Storing money as a float creates long-term problems
+
+If you store a price as a float, you are asking the database and PHP to preserve decimal precision that binary floats do not represent cleanly.
+
+Common Laravel workaround:
+
+```php
+public function setPriceAttribute($value): void
+{
+    $this->attributes['price'] = (int) round($value * 100);
+}
+
+public function getPriceAttribute($value): float
+{
+    return $value / 100;
+}
+```
+
+This works, but it means every model repeats the same logic. It also pushes rounding decisions into many places instead of one.
+
+### Comparisons with floats can be misleading
+
+```php
+var_dump(0.3 === (0.1 + 0.2)); // bool(false)
+```
+
+With scaled integers, the comparison is exact because the stored value is an integer.
+
+```php
+use Jimeneztdavid\ScaledInt\ScaledInt;
+
+$a = ScaledInt::fromMajor('0.10');
+$b = ScaledInt::fromMajor('0.20');
+
+echo $a->add($b); // 0.30
+```
+
+### The same problem appears when saving and loading values
+
+Many projects end up doing this manually:
+
+```php
+$product->price = 10.25;
+$product->save();
+
+// save as 1025
+// read back as 10.25
+```
+
+That means multiplying by 100 on write, dividing by 100 on read, and keeping the column as an integer. `ScaledIntCast` does that for you in one place.
+
+```php
+use Jimeneztdavid\ScaledIntLaravel\ScaledIntCast;
+
+protected function casts(): array
+{
+    return [
+        'price' => ScaledIntCast::class.':100',
+    ];
+}
+```
+
+### What you get with ScaledInt
+
+- exact integer-based math
+- consistent rounding
+- easier comparisons
+- less custom accessor/mutator code
+- clearer intent in your models and services
+
 ## Usage
 
 ### Model cast
